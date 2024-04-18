@@ -61,6 +61,6 @@ function makeWork (arrOfArr, func) {
     let result = func(...arr);
     if (maxLocalResult<result) {maxLocalResult=result}
   });
-  if (maxWorkerResult < maxLocalResult) {maxWorkerResult = maxLocalResult};
+  if (maxWorkerResult < maxLocalResult) {maxWorkerResult = maxLocalResult};  
   return maxWorkerResult;
 }
