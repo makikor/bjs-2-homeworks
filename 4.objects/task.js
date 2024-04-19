@@ -12,18 +12,17 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-    if (!("marks" in this)){}
-    else {this.marks.push(...marks)}   
+    if (("marks" in this)){
+        this.marks.push(...marks);
+    }
 }
 
 Student.prototype.getAverage = function () {
-    let result;
-    if(!("marks" in this) || this.marks.length===0){return result=0}
-    else{
-        let sum = this.marks.reduce((sum, item) => sum +item);
-        return result = sum/this.marks.length
-    }
-    return result;
+    if(!("marks" in this) || this.marks.length===0){
+        return 0;
+    } 
+    let sum = this.marks.reduce((sum, item) => sum +item);
+    return sum/this.marks.length;
 }
 
 Student.prototype.exclude = function (reason) {
