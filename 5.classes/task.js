@@ -82,7 +82,7 @@ class Library {
         return null;
     }
 
-    giveBookByName(bookName){
+    giveBookByName(bookName) {
         for(let item in this.books){
             if(this.books[item].name == bookName){
                 let issueBook = new PrintEditionItem(this.books[item])
