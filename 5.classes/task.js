@@ -3,22 +3,23 @@ class PrintEditionItem {
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
+        this.state = 100;
     }
     set state(state){
         if(state == 0){
-            this._state = 0;
+            return this._state = 0;
         }if(state > 0 && state < 100){
-            this._state = state;
+            return this._state = state;
         }
-        this._state = 100;
+        return this._state = 100;
     }
     get state(){
-        return 100;
+        return this._state;
     };
     type = null;  
 
      fix(){
-        if (this.state === 100 || this.state === undefined){return }
+        if (this.state === 0 || this.state === undefined){return }
         this.state *= 1.5;
         return this.state;
     }
@@ -85,9 +86,9 @@ class Library {
     giveBookByName(bookName){
         for(let item in this.books){
             if(this.books[item].name == bookName){
-                let issueBook = this.books[item].name
+                let issueBook = new PrintEditionItem(this.books[item])
                 this.books.splice(item, 1)
-                return issueBook
+                return issueBook.name;
             }
         }
         return null
